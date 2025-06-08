@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import ImagesGrid from "./images-grid";
+import { Suspense } from "react";
 
 export default function ImageGallery() {
   // Get images from public/uploads directory
@@ -20,7 +21,9 @@ export default function ImageGallery() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {images.length > 0 ? (
           // Extract into a separate client component since it needs search params which are a client feature
-          <ImagesGrid images={images} />
+          <Suspense>
+            <ImagesGrid images={images} />
+          </Suspense>
         ) : (
           <p className="col-span-full text-center text-muted-foreground">
             No images found. Please upload some images.

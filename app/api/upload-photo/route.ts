@@ -18,7 +18,7 @@ export async function POST(request: Request) {
   return Response.json({ url: imageUrl });
 }
 
-export async function saveImageToFileSystem(file: File, filename: string) {
+async function saveImageToFileSystem(file: File, filename: string) {
   const uploadDir = path.join(process.cwd(), "public", "uploads");
 
   // Ensure directory exists
